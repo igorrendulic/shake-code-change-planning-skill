@@ -9,6 +9,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VALIDATOR = ROOT / "scripts" / "validate-plan.py"
+SKILL = ROOT / "SKILL.md"
+PLAN_FORMAT = ROOT / "references" / "plan-format.md"
 
 
 def plan_text(
@@ -139,6 +141,17 @@ All four audits are represented in metadata.
 
 No material discoveries after decision resolution.
 """
+
+
+class DocumentationContractTests(unittest.TestCase):
+    def test_delivery_slices_are_distinct_from_task_graph_tasks(self):
+        skill = SKILL.read_text()
+        plan_format = PLAN_FORMAT.read_text()
+
+        self.assertIn("delivery slices", skill.lower())
+        self.assertIn("schema heading remains `# Implementation Slices`", plan_format)
+        self.assertIn("does not constrain task-level scheduling", plan_format)
+        self.assertIn("parallel tasks within one delivery slice", plan_format)
 
 
 class ValidatorCliTests(unittest.TestCase):

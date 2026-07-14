@@ -15,7 +15,7 @@ Produce a planning artifact only. Do not edit implementation code, create task f
 4. Run the smallest safe, non-destructive, meaningful pre-change baseline when practical. Record the command, result, existing failures, and relevance. Otherwise record why, the slice that establishes it, and how later checks separate regressions.
 5. Route the current or intended path as `stimulus → boundary → validation/interpretation → orchestration → core transformation → state/dependency → emission → observation`, adapting it to the system.
 6. Identify material decisions and resolve prerequisites first. Compare only genuinely different approaches and select a direction.
-7. Define coherent, independently verifiable vertical slices before considering parallelism. Each ship slice must traverse a production-shaped path, advance a success criterion, and leave the repository compatible and buildable.
+7. Define coherent, independently verifiable delivery slices before considering parallelism. Each ship delivery slice must traverse a production-shaped path, advance a success criterion, and leave the repository compatible and buildable.
 8. Apply modifier gates, then use [planning-audits.md](references/planning-audits.md) to audit decision completeness, traceability, vertical order, and parallelization.
 9. Render the exact grammar in [plan-format.md](references/plan-format.md), then run `python scripts/validate-plan.py <plan>` and `python scripts/validate-plan.py <plan> --handoff` before declaring handoff readiness.
 
@@ -39,8 +39,12 @@ When writes are permitted and `.agent` exists, evolve standard/full plans at `.a
 
 ## Handoff Boundaries
 
-Implementation may choose only localized, reversible details that preserve behavior, contracts, architecture, data semantics, rollout, acceptance criteria, and other slices. A choice outside that discretion stops the slice and requires replanning.
+A delivery slice is a macro-level, independently verifiable delivery boundary. It preserves architecture, contracts, sequencing, acceptance criteria, rollout, and reversal across handoff; it is not a task file or a complete task decomposition. The canonical schema retains the `# Implementation Slices` heading for compatibility.
 
-For scouts, follow [plan-format.md](references/plan-format.md). A material scout is terminal for its plan; do not speculate downstream ship slices. A technical spike may end with evidence and a recommendation.
+Task-graph decomposes each delivery slice into fresh-context implementation tasks. It may discover dependencies and safe parallel work within a delivery slice. Slice-level parallel eligibility describes whether whole delivery slices can proceed concurrently; it does not constrain internal task-level scheduling.
 
-Return an inline micro plan or the persisted plan path. `shape-code-change` never invokes task decomposition; the consumer must validate a handoff-ready schema and preserve slice provenance.
+Implementation may choose only localized, reversible details that preserve behavior, contracts, architecture, data semantics, rollout, acceptance criteria, and other delivery slices. A choice outside that discretion stops the slice and requires replanning.
+
+For scouts, follow [plan-format.md](references/plan-format.md). A material scout is terminal for its plan; do not speculate downstream ship delivery slices. A technical spike may end with evidence and a recommendation.
+
+Return an inline micro plan or the persisted plan path. `shape-code-change` never invokes task decomposition; the consumer must validate a handoff-ready schema and preserve delivery-slice provenance.

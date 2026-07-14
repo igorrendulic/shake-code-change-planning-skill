@@ -1,6 +1,6 @@
 # Shape Code Change
 
-`shape-code-change` is a planning-only Codex skill for investigating requested software changes and producing decision-complete, code-routed implementation plans. It supports micro, standard, and full planning depth, validates handoff-ready plans, and prepares vertical slices for later task-graph decomposition.
+`shape-code-change` is a planning-only Codex skill for investigating requested software changes and producing decision-complete, code-routed implementation plans. It supports micro, standard, and full planning depth, validates handoff-ready plans, and prepares macro-level delivery slices for later task-graph decomposition.
 
 ## Install from GitHub
 
@@ -42,7 +42,7 @@ Ask Codex:
 Use $shape-code-change to investigate this requested change and produce an implementation-ready plan.
 ```
 
-The skill creates planning artifacts only. It does not modify implementation code or create task-graph task files.
+The skill creates planning artifacts only. Its delivery slices preserve architectural boundaries and sequencing; task-graph owns smaller task files, task dependencies, and safe scheduling within each slice.
 
 ## Validate a plan
 

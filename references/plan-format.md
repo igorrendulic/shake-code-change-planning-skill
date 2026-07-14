@@ -92,7 +92,7 @@ Use these headings in order:
 5. `# Decisions` — one descriptor for each material choice.
 6. `# Scope` — included and excluded work plus boundaries.
 7. `# Baseline` — executed checks or explicit deferral.
-8. `# Implementation Slices` — vertically ordered descriptors.
+8. `# Implementation Slices` — vertically ordered delivery-slice descriptors. The schema heading remains `# Implementation Slices` for version 1 compatibility; prose calls these records delivery slices to distinguish them from task-graph tasks.
 9. `# Risk and Operational Gates` — declared modifier descriptors and cross-cutting gates.
 10. `# Planning Audits` — audit conclusions and justified exceptions.
 11. `# Pre-Handoff Discovery Log` — discoveries after initial investigation and whether they changed material assumptions.
@@ -124,7 +124,7 @@ alternatives_rejected:
 
 A decision rule states the observable predicate and resulting choice. `unresolved_material_decisions` may refer to open decision IDs in drafts but must be empty at handoff.
 
-### Implementation slice
+### Delivery slice descriptor
 
 Use globally stable `SLICE-*` and `AC-*` IDs.
 
@@ -159,13 +159,13 @@ reversal: "Remove the additive route before external adoption."
 
 `type` is `ship`, `prerequisite`, or `scout`. Code-location evidence is `confirmed`, `proposed`, or `candidate`. `confirmed` means inspection found that exact path/symbol. A proposed location is a selected future location. A candidate requires implementation-time localized confirmation without opening a material decision.
 
-Every ship slice advances at least one success criterion, follows a production-shaped path, is independently verifiable, and leaves the repository compatible and buildable. A prerequisite names the vertical slice it rejoins in its goal, scope, or an optional `rejoins` field.
+Every ship delivery slice advances at least one success criterion, follows a production-shaped path, is independently verifiable, and leaves the repository compatible and buildable. A prerequisite names the delivery slice it rejoins in its goal, scope, or an optional `rejoins` field.
 
 ### Scout
 
 A non-material scout may block already-defined slices. Set `material: false`, state its bounded question and acceptance evidence, and let dependent slices name it in `depends_on`.
 
-A scout that could change architecture, scope, risk, or delivery structure is terminal. Do not define speculative downstream ship slices. Include:
+A scout that could change architecture, scope, risk, or delivery structure is terminal. Do not define speculative downstream ship delivery slices. Include:
 
 ```yaml
 id: SLICE-001
@@ -237,12 +237,14 @@ Supersede for changes to stakeholder behavior/success, scope, contracts or persi
 
 The intended future command is: `I will update the task-graph to decompose .agent/plans/<plan>.md`.
 
+A delivery slice is a macro-level handoff boundary, not a task file and not an instruction to create exactly one task. The `parallel` mapping records whether complete delivery slices can proceed concurrently. It does not constrain task-level scheduling after handoff. Task-graph may create parallel tasks within one delivery slice when their work is independently safe, while preserving the delivery slice's dependencies, contracts, scope, and acceptance criteria.
+
 The consumer must:
 
 1. Require `status: handoff-ready` and a supported `schema_version`.
 2. Parse or validate before decomposition.
 3. Check repository-state freshness and re-inspect relevant paths on drift.
-4. Convert slices into fresh-context tasks while preserving success criteria, scope, dependencies, acceptance criteria, and tests.
+4. Decompose delivery slices into small fresh-context tasks while preserving success criteria, scope, dependencies, acceptance criteria, and tests; do not mechanically map one slice or each scope bullet to one task.
 5. Avoid new product or architectural decisions and stop on material gaps.
 6. Record this provenance in each task:
 
@@ -252,7 +254,7 @@ source_slice: SLICE-001
 success_criteria: [SC-001]
 ```
 
-Task decomposition does not modify the source plan.
+Task decomposition does not modify the source plan. Task-level dependencies and parallelism may be more granular than delivery-slice scheduling, but they must not contradict slice-level ordering or introduce product or architectural decisions.
 
 ## Validator
 

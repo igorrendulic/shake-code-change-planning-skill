@@ -42,8 +42,8 @@ Change trigger → config/control-plane boundary → policy validation → rollo
 
 ### Greenfield
 
-Use intended paths as proposed evidence. Route one thin production-shaped walking skeleton through boundary, core behavior, dependency, emission, and observation before broader capability slices.
+Use intended paths as proposed evidence. Route one thin production-shaped walking skeleton through boundary, core behavior, dependency, emission, and observation before broader delivery slices.
 
 ## Horizontal exceptions
 
-Allow a non-vertical prerequisite only for characterization, a bounded PoC, additive compatibility, release-safety infrastructure, or a seam-establishing refactor. State which vertical slice it rejoins and why the exception is necessary. Do not split layers merely to manufacture parallel work.
+Allow a non-vertical prerequisite only for characterization, a bounded PoC, additive compatibility, release-safety infrastructure, or a seam-establishing refactor. State which delivery slice it rejoins and why the exception is necessary. Do not split layers merely to manufacture parallel work.
