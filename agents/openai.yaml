@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shape Code Change"
+  short_description: "Create code-routed implementation plans"
+  default_prompt: "Use $shape-code-change to investigate this requested change and produce an implementation-ready plan."

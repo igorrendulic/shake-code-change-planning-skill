@@ -1,0 +1,102 @@
+[
+  {
+    "id": "micro-local-defect",
+    "prompt": "Plan a local fix for the CLI's misspelled error label; inspect the formatter and nearest test.",
+    "expect": {"trigger": true, "primary_intent": "defect-correction", "plan_depth": "micro", "artifact_mode": "inline"}
+  },
+  {
+    "id": "standard-capability",
+    "prompt": "Plan an authenticated CSV order export using the existing API patterns.",
+    "expect": {"trigger": true, "primary_intent": "capability-add", "plan_depth": "standard", "repository_evidence": true}
+  },
+  {
+    "id": "full-cross-service-change",
+    "prompt": "Design a change to checkout semantics across the web app, order service, and payment service with staged rollout.",
+    "expect": {"trigger": true, "primary_intent": "behavior-change", "plan_depth": "full", "risk_modifiers": ["public-contract", "deployment-migration"]}
+  },
+  {
+    "id": "greenfield-walking-skeleton",
+    "prompt": "Plan a new event ingestion service in this repository, including its first deployable slice.",
+    "expect": {"trigger": true, "primary_intent": "greenfield-system", "plan_depth": "full", "proposed_evidence_only": true}
+  },
+  {
+    "id": "refactor-preserves-contract",
+    "prompt": "Scope a refactor that separates invoice calculation from persistence without changing behavior.",
+    "expect": {"trigger": true, "primary_intent": "refactor", "behavior_preserved": true, "seam_rejoins_vertical_delivery": true}
+  },
+  {
+    "id": "data-migration",
+    "prompt": "Prepare the implementation plan for moving account identifiers from integers to UUIDs while old workers remain live.",
+    "expect": {"trigger": true, "primary_intent": "migration", "plan_depth": "full", "risk_modifiers": ["public-contract", "persistent-data", "deployment-migration"]}
+  },
+  {
+    "id": "quality-improvement",
+    "prompt": "Plan how to reduce search-result irrelevance with a measurable before-and-after evaluation.",
+    "expect": {"trigger": true, "primary_intent": "quality-improvement", "measured_target": true}
+  },
+  {
+    "id": "operational-change",
+    "prompt": "Plan a safer worker autoscaling policy with observability and reversal gates.",
+    "expect": {"trigger": true, "primary_intent": "operational-change", "risk_modifiers": ["deployment-migration", "performance-cost"]}
+  },
+  {
+    "id": "retirement",
+    "prompt": "Plan retirement of the legacy v1 webhook after proving consumers have drained.",
+    "expect": {"trigger": true, "primary_intent": "retirement", "risk_modifiers": ["public-contract"], "consumer_inventory": true}
+  },
+  {
+    "id": "verification",
+    "prompt": "Prepare a plan to verify that the failover runbook meets the stated recovery objective.",
+    "expect": {"trigger": true, "primary_intent": "verification", "thresholds": true}
+  },
+  {
+    "id": "technical-spike",
+    "prompt": "Plan a timeboxed spike to determine whether our store can atomically enforce idempotency.",
+    "expect": {"trigger": true, "primary_intent": "technical-spike", "material_scout_terminal": true}
+  },
+  {
+    "id": "security-ui-combination",
+    "prompt": "Design a plan for showing patient documents in the mobile app with authorization and accessibility coverage.",
+    "expect": {"trigger": true, "risk_modifiers": ["security-privacy-compliance", "user-interface-accessibility"], "combined_gates": true}
+  },
+  {
+    "id": "async-concurrency",
+    "prompt": "Plan exactly-once-visible invoice generation over an at-least-once queue.",
+    "expect": {"trigger": true, "risk_modifiers": ["distributed-async-concurrency"], "idempotency_decision": true}
+  },
+  {
+    "id": "question-restraint",
+    "prompt": "Plan adding a route consistent with the repository's existing sibling routes; do not ask me things the code answers.",
+    "expect": {"trigger": true, "inspect_before_questions": true, "material_questions_only": true}
+  },
+  {
+    "id": "unsafe-baseline",
+    "prompt": "Plan a billing job change. The only current end-to-end command charges real cards.",
+    "expect": {"trigger": true, "baseline_not_run": true, "deferred_baseline_fields": true}
+  },
+  {
+    "id": "evidence-labeling",
+    "prompt": "Plan a greenfield adapter and distinguish intended files from files you actually find.",
+    "expect": {"trigger": true, "confirmed_proposed_candidate_distinct": true}
+  },
+  {
+    "id": "vertical-before-parallel",
+    "prompt": "Plan this feature and identify parallel work only after end-to-end slices are coherent.",
+    "expect": {"trigger": true, "vertical_slices_first": true, "no_parallelism_driven_split": true}
+  },
+  {
+    "id": "no-trigger-implementation",
+    "prompt": "Implement the CSV export now and run its tests.",
+    "expect": {"trigger": false}
+  },
+  {
+    "id": "no-trigger-explanation",
+    "prompt": "Explain how the current order export code works; I do not need a plan.",
+    "expect": {"trigger": false}
+  },
+  {
+    "id": "no-trigger-task-tracking",
+    "prompt": "Move the current task card to done and report implementation progress.",
+    "expect": {"trigger": false}
+  }
+]
